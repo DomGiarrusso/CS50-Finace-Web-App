@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    <h2>Buy some Shares</h2>
+    <form action="/buy" method="post">
+        <div class="mb-3">
+            <label for="symbol"> Symbol:</label>
+            <input class="form-control mx-auto w-auto" id="symbol" name="symbol" placeholder="Symbol" type="text">
+        </div>
+        <div class="mb-3">
+            <label for="shares"> Shares:</label>
+            <input class="form-control mx-auto w-auto" id="shares" name="shares" placeholder="Shares" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit" value="Buy">Buy</button>
+    </form>
+    {% if quote %}
+    <h3>{{ quote ['name'] }} ({{ quote ['symbol'] }})</h3>
+    <div class="mb-3">
+        Price: {{ quote['price']|usd }}
+    </div>
+    {% endif %}
+{% endblock %}
